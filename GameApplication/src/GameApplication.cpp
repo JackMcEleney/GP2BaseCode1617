@@ -129,12 +129,12 @@ void GameApplication::update()
 void GameApplication::initGraphics()
 {
 	//OpenGL Context
-	SDL_GL_GetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
 		SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-	m_GLcontext = SDL_GL_CreateContext(m_pWindow);
+	m_GLContext = SDL_GL_CreateContext(m_pWindow);
 
 	//GLEW
 	glewExperimental = GL_TRUE;

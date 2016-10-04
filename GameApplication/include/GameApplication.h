@@ -44,7 +44,7 @@ public:
 protected:
 	//SDL Windows
 	SDL_Window * m_pWindow;
-	SDL_GLContext m_GLcontext;
+	SDL_GLContext m_GLContext;
 
 	bool m_bIsRunning;
 	bool m_bIsActive;
