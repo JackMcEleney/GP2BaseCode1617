@@ -124,6 +124,10 @@ void GameApplication::update()
 {
 }
 
+void GameApplication::initGraphics()
+{
+}
+
 void GameApplication::run()
 {
 	SDL_Event event;
