@@ -24,6 +24,15 @@ using namespace std;
 #include <SDL.h>
 #include <SDL_opengl.h>
 
+#define GLM_FORCE_RADIANS
+//maths headers
+#include <glm/glm.hpp>
+using namespace glm;
+
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/string_cast.hpp>	
+
 #include "../Utils/include/Utils.h"
 
 #endif
