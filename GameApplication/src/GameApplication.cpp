@@ -108,6 +108,22 @@ void GameApplication::OnRestored()
   m_bIsActive=true;
 }
 
+void GameApplication::OnBeginRender()
+{
+}
+
+void GameApplication::render()
+{
+}
+
+void GameApplication::OnEndRender()
+{
+}
+
+void GameApplication::update()
+{
+}
+
 void GameApplication::run()
 {
 	SDL_Event event;
@@ -163,6 +179,11 @@ void GameApplication::run()
 				}
 				}
 			}
+			update();
+
+			OnBeginRender();
+			render();
+			OnEndRender();
 		}
 	}
 }
