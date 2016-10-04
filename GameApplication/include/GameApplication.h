@@ -34,6 +34,8 @@ public:
 	void OnEndRender();
 
 	virtual void update();
+	
+	void initGraphics();
 
 	//Basically runs our game
 	void run();
