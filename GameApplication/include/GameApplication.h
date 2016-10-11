@@ -37,6 +37,8 @@ public:
 	
 	void initGraphics();
 
+	void setViewport(int width, int height);
+
 	//Basically runs our game
 	void run();
 
