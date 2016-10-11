@@ -57,6 +57,12 @@ void GameApplication::parseConfig(int args,char * arg[])
 void GameApplication::initGraphics()
 {
 
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+		SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+
     m_GLcontext = SDL_GL_CreateContext(m_pWindow);
     //Smooth shading
 		glShadeModel( GL_SMOOTH );
@@ -80,6 +86,16 @@ void GameApplication::initGraphics()
 
 }
 
+void GameApplication::initScene()
+{
+
+}
+
+void GameApplication::destroyScene()
+{
+
+}
+
 void GameApplication::setViewport( int width, int height )
 {
   //screen ration
@@ -96,6 +112,7 @@ void GameApplication::setViewport( int width, int height )
     //Setup viewport
     glViewport( 0, 0, ( GLsizei )width, ( GLsizei )height );
 
+	/*
     //Change to projection matrix mode
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity( );
@@ -109,6 +126,7 @@ void GameApplication::setViewport( int width, int height )
 
     //Reset using the Identity Matrix
     glLoadIdentity( );
+	*/
 }
 
 bool GameApplication::init(int args,char * arg[])
@@ -132,6 +150,7 @@ bool GameApplication::init(int args,char * arg[])
 
 	createWindow(m_Options.getOption("WindowTitle"),m_WindowWidth,m_WindowHeight,m_WindowCreationFlags);
   initGraphics();
+  initScene();
 
 	m_bIsActive=true;
 	return true;
@@ -141,6 +160,7 @@ void GameApplication::OnQuit()
 {
 	//set our boolean which controls the loop to false
 	m_bIsRunning = false;
+	destroyScene();
   SDL_GL_DeleteContext(m_GLcontext);
 	SDL_DestroyWindow(m_pWindow);
 	SDL_Quit();
@@ -184,6 +204,7 @@ void GameApplication::OnEndRender()
 
 void GameApplication::render()
 {
+	/*
   //Switch to ModelView
   glMatrixMode( GL_MODELVIEW );
   //Reset using the Identity Matrix
@@ -197,6 +218,7 @@ void GameApplication::render()
     glVertex3f(-1.0f, -1.0f, 0.0f); // Bottom Left
     glVertex3f(1.0f, -1.0f, 0.0f); // Bottom Right
   glEnd();
+  */
 }
 
 void GameApplication::run()

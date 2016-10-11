@@ -40,6 +40,11 @@ public:
 
 	void createWindow(const string& windowTitle,const unsigned int width, const unsigned int height, const unsigned int windowFlags=0);
 	void initGraphics();
+
+	virtual void initScene();
+
+	virtual void destroyScene();
+
 protected:
 	//SDL Windows
 	SDL_Window * m_pWindow;
