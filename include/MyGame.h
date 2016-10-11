@@ -13,6 +13,8 @@ public:
 	void destroyScene();
 	void render();
 	void update();
+
+	GLuint m_ShaderProgram;
 private:
 	GLuint m_VBO;
 	GLuint m_VAO;
