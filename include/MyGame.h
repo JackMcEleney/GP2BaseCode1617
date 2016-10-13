@@ -9,6 +9,10 @@ public:
 	MyGame();
 	~MyGame();
 
+	//matrices
+	mat4 m_ViewMatrix;
+	mat4 m_ProjMatrix;
+	mat4 m_ModelMatrix;
 	void initScene();
 	void destroyScene();
 	void render();
