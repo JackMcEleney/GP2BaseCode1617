@@ -58,12 +58,21 @@ void GameApplication::initGraphics()
 {
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
-		SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+		SDL_GL_CONTEXT_PROFILE_CORE);
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
     m_GLcontext = SDL_GL_CreateContext(m_pWindow);
+
+	glewExperimental = GL_TRUE;
+
+	GLenum err = glewInit();
+
+	if (GLEW_OK != err) {
+		std::cout << "Error: " << glewGetErrorString(err) << std::endl;
+	}
+
     //Smooth shading
 		glShadeModel( GL_SMOOTH );
 
@@ -192,7 +201,7 @@ void GameApplication::update()
 void GameApplication::OnBeginRender()
 {
   //Set the clear colour(background)
-  glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
+  glClearColor( 0.25f, 0.0f, 0.0f, 0.0f );
   //clear the colour and depth buffer
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 }
