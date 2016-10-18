@@ -18,6 +18,10 @@ public:
 	void render();
 	void update();
 
+	GLuint m_Texture;
+
+	GLuint m_Sampler;
+
 	GLuint m_ShaderProgram;
 private:
 	GLuint m_VBO;
