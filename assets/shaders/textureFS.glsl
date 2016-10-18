@@ -10,5 +10,5 @@ uniform sampler2D diffuseSampler;
 
 void main ()
 {
-	FragColor = texture(diffuseSampler, vertexTextureCoordsOut)
+	FragColor = texture(diffuseSampler, vertexTextureCoordsOut);
 }

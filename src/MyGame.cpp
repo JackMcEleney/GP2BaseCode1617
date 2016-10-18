@@ -4,6 +4,7 @@ struct Vertex
 {
 	float x, y, z;
 	float r, g, b, a;
+	float tu, tv;
 };
 	
 	const std::string ASSET_PATH = "assets";
@@ -26,20 +27,21 @@ void MyGame::initScene()
 	GameApplication::initScene();
 	Vertex verts[] = 
 	{
-		{-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f},
-		{0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f},
-		{-0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f},
-		{ 0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f},
-		{ 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f},
-		{ -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f},
-		{ 2.0f, 1.5f, 0.0f, 1.0f, 0.5f, 0.0f, 1.0f},
-		{ 3.0f, -1.5f, 0.0f, 1.0f, 0.5f, 0.0f, 1.0f},
-		{ 1.0f, -1.5f, 0.0f, 1.0f, 0.5f, 0.0f, 1.0f}
+		//Texture mapping is weird
+		{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f},
+		{1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f },
+		{0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f },
+		{1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f },
+		{1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f },
+		{0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f }//,
+		//{2.0f, 1.5f, 0.0f, 1.0f, 0.5f, 0.0f, 1.0f},
+		//{3.0f, -1.5f, 0.0f, 1.0f, 0.5f, 0.0f, 1.0f},
+		//{1.0f, -1.5f, 0.0f, 1.0f, 0.5f, 0.0f, 1.0f}
 	};
 	
 	glGenBuffers(1, &m_VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(Vertex), verts, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(Vertex), verts, GL_STATIC_DRAW);
 	glGenVertexArrays(1, &m_VAO);
 	glBindVertexArray(m_VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
@@ -51,6 +53,10 @@ void MyGame::initScene()
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex),
 		(void**)(3 * sizeof(float)));
+
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex),
+		(void**)(7 * sizeof(float)));
 
 	GLuint vertexShaderProgram = 0;
 	std::string vsPath = ASSET_PATH + SHADER_PATH + "/simpleVS.glsl";
@@ -112,6 +118,14 @@ void MyGame::render()
 			GL_FALSE, glm::value_ptr(MVP));
 	}
 	
+	glBindSampler(0, m_Sampler);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, m_Texture);
+	GLint textureLocation = glGetUniformLocation(m_ShaderProgram, "diffuseSampler");
+	if (textureLocation != -1)
+	{
+		glUniform1i(textureLocation, 0);
+	}
 	GLint ColorsLocation = glGetUniformLocation(m_ShaderProgram,
 		"Colors");
 	if (ColorsLocation != -1)
@@ -121,7 +135,7 @@ void MyGame::render()
 				glm::value_ptr(Colors));
 	}
 	
-	glDrawArrays(GL_TRIANGLES, 0, 9);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
 void MyGame::update()
