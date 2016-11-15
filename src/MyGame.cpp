@@ -26,6 +26,9 @@ void MyGame::initScene()
 		{vec3(0.5f,  -0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,3.0f)}
 	};
 
+	int Indices[] = { 0, 1, 2,
+					  3, 4, 5};
+
 	m_TestObject = new GameObject();
 
 	string vsPath = ASSET_PATH + SHADER_PATH + "/simpleVS.glsl";
@@ -36,7 +39,7 @@ void MyGame::initScene()
 	string texturePath = ASSET_PATH + TEXTURE_PATH + "/texture.png";
 	m_TestObject->loadTexture(texturePath);
 
-	m_TestObject->copyVertexData(verts, 6);	
+	m_TestObject->copyVertexData(verts, 6, Indices, 6);	
 }
 
 void MyGame::destroyScene()
