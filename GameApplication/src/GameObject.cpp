@@ -16,7 +16,7 @@ GameObject::GameObject()
 	m_ModelMatrix = mat4(1.0f);
 	m_TranslationMatrix = mat4(1.0f);
 	m_RotationMatrix = mat4(1.0f);
-	m_ScaleMatrix = mat4(1.0f);
+	m_ScaleMatrix = mat4(2.0f);
 
 	m_NumberOfVertices = 0;
 }
@@ -58,8 +58,10 @@ void GameObject::onUpdate()
 	m_ModelMatrix = m_TranslationMatrix*m_RotationMatrix*m_ScaleMatrix;
 }
 
+
 void GameObject::onInit()
 {
+
 }
 
 void GameObject::onDestroy()
@@ -69,6 +71,11 @@ void GameObject::onDestroy()
 	glDeleteProgram(m_ShaderProgram);
 	glDeleteBuffers(1, &m_VBO);
 	glDeleteVertexArrays(1, &m_VAO);
+}
+
+void GameObject::resize()
+{
+
 }
 
 void GameObject::loadTexture(const string & filename)

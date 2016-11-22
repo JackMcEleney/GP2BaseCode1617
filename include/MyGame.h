@@ -29,5 +29,6 @@ private:
 	GLuint m_ClampSampler;
 
 	GameObject * m_TestObject;
+	GameObject * m_ModelObject;
 };
 #endif

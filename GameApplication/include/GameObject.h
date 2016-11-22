@@ -16,6 +16,7 @@ public:
 	void onUpdate();
 	void onInit();
 	void onDestroy();
+	void resize();
 
 	void loadTexture(const string& filename);
 	void loadShaders(const string& vsFilename, const string& fsFilename);
@@ -37,6 +38,7 @@ private:
 	vec3 m_Position;
 	vec3 m_Rotation;
 	vec3 m_Scale;
+	vec3 m_ScaleDown;
 
 	mat4 m_TranslationMatrix;
 	mat4 m_RotationMatrix;
