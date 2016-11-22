@@ -18,16 +18,15 @@ void MyGame::initScene()
 {
 	
 	Vertex verts[] = {
-		{vec3(-0.5f, -0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(0.0f,3.0f)},
-		{vec3(0.5f, -0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,3.0f)},
-		{vec3(-0.5f,  0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(0.0f,0.0f)},
-		{vec3(-0.5f, 0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(0.0f,0.0f)},
-		{vec3(0.5f, 0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,0.0f)},
-		{vec3(0.5f,  -0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,3.0f)}
+		{vec3(-2.5f, -2.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(0.0f,3.0f)},
+		{vec3(2.5f, -2.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,3.0f)},
+		{vec3(-2.5f,  2.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(0.0f,0.0f)},
+		//{vec3(-0.5f, 0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(0.0f,0.0f)},
+		{vec3(2.5f, 2.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,0.0f)},
+		//{vec3(0.5f,  -0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,3.0f)}
 	};
 
-	int Indices[] = { 0, 1, 2,
-					  3, 4, 5};
+	int Indices[] = {0, 1, 2, 2, 3, 1};
 
 	m_TestObject = new GameObject();
 
@@ -39,7 +38,7 @@ void MyGame::initScene()
 	string texturePath = ASSET_PATH + TEXTURE_PATH + "/texture.png";
 	m_TestObject->loadTexture(texturePath);
 
-	m_TestObject->copyVertexData(verts, 6, Indices, 6);	
+	m_TestObject->copyVertexData(verts, 4, Indices, 6);	
 }
 
 void MyGame::destroyScene()
