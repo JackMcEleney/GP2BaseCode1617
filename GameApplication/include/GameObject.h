@@ -46,6 +46,11 @@ private:
 
 	int m_NumberOfVertices;
 	int m_NumberOfIndices;
+
+	vec4 m_AmbientMaterialColour;
+	vec4 m_DiffuseMaterialColour;
+	vec4 m_SpecularMaterialColour;
+	float m_SpecularPower;
 protected:
 };
 
