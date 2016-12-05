@@ -18,19 +18,6 @@ MyGame::~MyGame()
 
 void MyGame::initScene()
 {
-	/*
-	Vertex verts[] = {
-		{vec3(-2.5f, -2.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(0.0f,3.0f),vec3(1.0f,1.0f,1.0f)},
-		{vec3(2.5f, -2.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,3.0f),vec3(1.0f,1.0f,1.0f) },
-		{vec3(-2.5f,  2.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(0.0f,0.0f),vec3(1.0f,1.0f,1.0f) },
-		//{vec3(-0.5f, 0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(0.0f,0.0f),vec3(1.0f,1.0f,1.0f)},
-		{vec3(2.5f, 2.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,0.0f),vec3(1.0f,1.0f,1.0f)},
-		//{vec3(0.5f,  -0.5f, 0.0f),vec4(1.0f,1.0f,1.0f,1.0f),vec2(3.0f,3.0f),vec3(1.0f,1.0f,1.0f)}
-	};
-
-	int Indices[] = {0, 1, 2, 2, 3, 1};
-	*/
-
 	m_TestObject = new GameObject();
 	m_ModelObject = new GameObject();
 	
@@ -49,6 +36,14 @@ void MyGame::initScene()
 	string modelPath = ASSET_PATH + MODEL_PATH + "/utah-teapot.fbx";
 	m_ModelObject = loadModelFromFile(modelPath);
 	m_ModelObject->loadShaders(vsPath, fsPath);
+
+	m_CameraPosition = vec3(0.0f, 0.0f, 100.0f);
+
+	m_Light = shared_ptr<Light>(new Light());
+	m_Light->DiffuseColour = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light->SpecularColour = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light->Direction = vec3(0.0f, 0.0f, -1.0f);
+	m_AmbientLightColour = vec4(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void MyGame::destroyScene()
