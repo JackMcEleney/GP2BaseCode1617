@@ -50,6 +50,20 @@ void GameObject::onRender(mat4 & view, mat4 & projection)
 		glUniform1i(textureLocation, 0);
 	}
 
+
+
+	GLint ambientLocation = glGetUniformLocation(m_ShaderProgram, "ambientMaterialColour");
+	glUniform4fv(ambientLocation, 1, value_ptr(m_AmbientMaterialColour));
+
+	GLint diffuseLocation = glGetUniformLocation(m_ShaderProgram, "diffuseMaterialColour");
+	glUniform4fv(diffuseLocation, 1, value_ptr(m_DiffuseMaterialColour));
+
+	GLint specularLocation = glGetUniformLocation(m_ShaderProgram, "specularMaterialColour");
+	glUniform4fv(specularLocation, 1, value_ptr(m_SpecularMaterialColour));
+
+	GLint specularPowerLocation = glGetUniformLocation(m_ShaderProgram, "specularPower");
+	glUniform1f(specularPowerLocation, m_SpecularPower);
+
 	glDrawElements(GL_TRIANGLES, m_NumberOfIndices, GL_UNSIGNED_INT, (void*)0);
 }
 
