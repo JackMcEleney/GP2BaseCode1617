@@ -31,6 +31,7 @@ private:
 	GameObject * m_TestObject;
 	GameObject * m_ModelObject;
 	shared_ptr<Light> m_Light;
-
+	vec4 m_AmbientLightColour;
+	vec3 m_CameraPosition;
 };
 #endif
