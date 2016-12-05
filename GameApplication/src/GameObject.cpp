@@ -19,6 +19,11 @@ GameObject::GameObject()
 	m_ScaleMatrix = mat4(2.0f);
 
 	m_NumberOfVertices = 0;
+
+	m_AmbientMaterialColour = vec4(0.2f, 0.2f, 0.2f, 1.0f);
+	m_DiffuseMaterialColour = vec4(0.5f, 0.5f, 0.5f, 1.0f);
+	m_SpecularMaterialColour = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	m_SpecularPower = 25.0f;
 }
 
 GameObject::~GameObject()
