@@ -24,6 +24,7 @@ GameObject::GameObject()
 	m_DiffuseMaterialColour = vec4(0.5f, 0.5f, 0.5f, 1.0f);
 	m_SpecularMaterialColour = vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	m_SpecularPower = 25.0f;
+	m_pParent = nullptr;
 }
 
 GameObject::~GameObject()
@@ -75,6 +76,10 @@ void GameObject::onUpdate()
 	m_ScaleMatrix = scale(m_Scale);
 
 	m_ModelMatrix = m_TranslationMatrix*m_RotationMatrix*m_ScaleMatrix;
+	if (m_pParent)
+	{
+		m_ModelMatrix *= m_pParent->getModelMatrix();
+	}
 }
 
 
