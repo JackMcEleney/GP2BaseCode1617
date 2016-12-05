@@ -67,19 +67,30 @@ void MyGame::update()
 {
 	GameApplication::update();
 
-	m_ProjMatrix = perspective(radians(45.0f), (float)m_WindowWidth / (float)m_WindowHeight, 0.1f, 100.0f);
-	m_ViewMatrix = lookAt(vec3(0.0f, 0.0f, 10.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
-	m_ModelMatrix = translate(mat4(1.0f), vec3(0.0f, 0.0f, -0.2f));
-
-	m_ModelObject->resize(vec3(0.1f, 0.1f, 0.1f));
-
-	//m_TestObject->onUpdate();
+	m_ProjMatrix = perspective(radians(45.0f), (float)m_WindowWidth / (float)m_WindowHeight, 0.1f, 1000.0f);
+	m_ViewMatrix = lookAt(m_CameraPosition, vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
 	m_ModelObject->onUpdate();
 }
 
 void MyGame::render()
 {
 	GameApplication::render();
-	//m_TestObject->onRender(m_ViewMatrix, m_ProjMatrix);
-	m_ModelObject->onRender(m_ViewMatrix, m_ProjMatrix);
+	GLuint currentShader = m_ModelObject->getShaderProgram();
+
+	GLint ambientLightColourLocation = glGetUniformLocation(currentShader, "ambientLightColour");
+	glUniform4fv(ambientLightColourLocation, 1, value_ptr(m_AmbientLightColour));
+
+	GLint diffuseLightColourLocation = glGetUniformLocation(currentShader, "diffuseLightColour");
+	glUniform4fv(diffuseLightColourLocation, 1, value_ptr(m_Light->DiffuseColour));
+
+	GLint specularLightColourLocation = glGetUniformLocation(currentShader, "specularLightColour");
+	glUniform4fv(specularLightColourLocation, 1, value_ptr(m_Light->SpecularColour));
+
+	GLint lightDirectionLocation = glGetUniformLocation(currentShader, "lightDirection");
+	glUniform3fv(lightDirectionLocation, 1, value_ptr(m_Light->Direction));
+
+	GLint cameraPositionLocation = glGetUniformLocation(currentShader, "cameraPos");
+	glUniform3fv(cameraPositionLocation, 1, value_ptr(m_CameraPosition));
+
+	m_TestGO->onRender(m_ViewMatrix, m_ProjMatrix);
 }
