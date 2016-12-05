@@ -23,6 +23,7 @@ public:
 	void copyVertexData(Vertex *pVerts, int numberOfVertcies, int *pIndices, int numberOfIndices);
 
 private:
+	GameObject * m_pParent;
 	GLuint m_VBO;
 	GLuint m_VAO;
 	GLuint m_IBO;
