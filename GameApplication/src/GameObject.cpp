@@ -73,9 +73,9 @@ void GameObject::onDestroy()
 	glDeleteVertexArrays(1, &m_VAO);
 }
 
-void GameObject::resize()
+void GameObject::resize(vec3 scale)
 {
-
+	m_Scale = scale;
 }
 
 void GameObject::loadTexture(const string & filename)
@@ -140,4 +140,8 @@ void GameObject::copyVertexData(Vertex * pVerts, int numberOfVertcies, int *pInd
 	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex),
 		(void**)offsetof(Vertex, texCoord));
+
+	glEnableVertexAttribArray(3);
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex),
+		(void**)offsetof(Vertex, normal));
 }
