@@ -27,6 +27,11 @@ public:
 		return m_ModelMatrix;
 	}
 
+	GLuint getShaderProgram()
+	{
+		return m_ShaderProgram;
+	};
+
 private:
 	GameObject * m_pParent;
 	GLuint m_VBO;
