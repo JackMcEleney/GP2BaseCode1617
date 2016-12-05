@@ -22,6 +22,11 @@ public:
 	void loadShaders(const string& vsFilename, const string& fsFilename);
 	void copyVertexData(Vertex *pVerts, int numberOfVertcies, int *pIndices, int numberOfIndices);
 
+	mat4& getModelMatrix()
+	{
+		return m_ModelMatrix;
+	}
+
 private:
 	GameObject * m_pParent;
 	GLuint m_VBO;
