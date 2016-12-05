@@ -30,5 +30,7 @@ private:
 
 	GameObject * m_TestObject;
 	GameObject * m_ModelObject;
+	shared_ptr<Light> m_Light;
+
 };
 #endif
