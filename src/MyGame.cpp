@@ -8,6 +8,7 @@ const std::string MODEL_PATH = "/models";
 MyGame::MyGame()
 {
 	m_TestObject = nullptr;
+	m_ModelObject = nullptr;
 }
 
 MyGame::~MyGame()

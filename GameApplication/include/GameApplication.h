@@ -6,6 +6,8 @@
 #include "Texture.h"
 #include "GameObject.h"
 #include "ModelLoading.h"
+#include "Vertex.h"
+#include "Light.h"
 
 //Game Application class, this basically wraps up the initialisation of a game
 //this will be the base class of any game we are making. You should override this
