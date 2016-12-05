@@ -40,11 +40,10 @@ GameObject * loadModelFromFile(const string & filename)
 			{
 				ourV.colour = vec4(1.0f, 1.0f, 1.0f, 1.0f);
 			}
+			aiVector3D normal = mesh->mNormals[v];
 
-			ourV.normal = 
-			
 			ourV.position = vec3(position.x, position.y, position.z);
-
+			ourV.normal = vec3(position.x, position.y, position.z);
 
 			verts.push_back(ourV);
 		}
