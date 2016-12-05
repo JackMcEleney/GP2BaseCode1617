@@ -43,7 +43,7 @@ GameObject * loadModelFromFile(const string & filename)
 			aiVector3D normal = mesh->mNormals[v];
 
 			ourV.position = vec3(position.x, position.y, position.z);
-			ourV.normal = vec3(position.x, position.y, position.z);
+			ourV.normal = vec3(normal.x, normal.y, normal.z);
 
 			verts.push_back(ourV);
 		}
