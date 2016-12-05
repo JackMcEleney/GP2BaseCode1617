@@ -92,5 +92,5 @@ void MyGame::render()
 	GLint cameraPositionLocation = glGetUniformLocation(currentShader, "cameraPos");
 	glUniform3fv(cameraPositionLocation, 1, value_ptr(m_CameraPosition));
 
-	m_TestGO->onRender(m_ViewMatrix, m_ProjMatrix);
+	m_ModelObject->onRender(m_ViewMatrix, m_ProjMatrix);
 }
