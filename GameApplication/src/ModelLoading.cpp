@@ -40,6 +40,8 @@ GameObject * loadModelFromFile(const string & filename)
 			{
 				ourV.colour = vec4(1.0f, 1.0f, 1.0f, 1.0f);
 			}
+
+			ourV.normal = 
 			
 			ourV.position = vec3(position.x, position.y, position.z);
 
